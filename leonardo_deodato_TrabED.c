@@ -5,13 +5,13 @@
 
 int rodar = 1;
 int rsp = 0;
-int vetor[10], preencher = 0;	
+int vetor[10];	
 int tam = 0;
 
 int test(int *vetor){
 	int i; 
 	for(i=0; i<10; i++){
-		printf("%d\t", vetor[i]);
+		printf("%d\t \n", vetor[i]);
 	}
 }
 
@@ -50,23 +50,23 @@ void maiorValor(int *vetor){
 }
 
 int invertido(int *vetor){
- 	int i,j,aux;
+ 	int i,j = 9,vetorAux[10], aux;
  	
  	puts("Confira abaixo o vetor invertido: \n");
- 	for(i=9; i>=0;i--)
-	 {
-	   for(j=0; j<10; j++)
-	   {
- 	   		aux = vetor[i];
- 	   		vetor[i] = vetor[j];
- 	   		vetor[j] = aux;
- 	   }
-			
+ 	for(i=0; i<10;i++)
+	 {  
+		vetorAux[j] = vetor[i];	
+		j--;
 	 }
-	 
+     j=0;
+	 for(i=0; i<10; i++){
+		vetor[i] = vetorAux[j];
+		j++;
+	 }
+	
 	 
 	 for(i=0; i<10; i++){
-		printf("%d\t", vetor[i]);
+		printf("%d\t", vetorAux[i]);
 	}
 }
 
@@ -103,10 +103,10 @@ void continuar(){
 }
 
 int main(){
-	
+int i;		
 srand(time(NULL));
- for(preencher = 0; preencher<10; preencher++){
- 	vetor[preencher] = rand() % 101;
+ for(i = 0; i<10; i++){
+ 	vetor[i] = rand() % 101;
  } 
   
   
@@ -128,20 +128,21 @@ do{
 		{
 			case 1:
 	 			somarVetor(vetor);
-	 			puts("Confira a abaixo os números que foram somados:");
+	 			puts("Confira a abaixo os nï¿½meros que foram somados:");
 	 			test(vetor);
 	 			
 			break;
 	
 			case 2:
 	 			maiorValor(vetor);
-	 			puts("Confira a abaixo os números que foram armazenados no vetor:");
+	 			puts("Confira a abaixo os nï¿½meros que foram armazenados no vetor:");
 	 			test(vetor);
 	 			
 			break;
 	
 	
 			case 3:
+				test(vetor);
 	 			puts("\nConfira abaixo o vetor na orden invertida: ");
 	 			invertido(vetor);
 			break;
